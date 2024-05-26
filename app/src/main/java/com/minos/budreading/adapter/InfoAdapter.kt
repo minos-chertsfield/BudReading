@@ -1,13 +1,17 @@
 package com.minos.budreading.adapter
 
 import android.content.Context
+import android.content.res.Resources
+import android.graphics.drawable.Icon
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.ImageView
 import android.widget.TextView
 import com.minos.budreading.R
 import com.minos.budreading.model.InfoModel
+import java.lang.reflect.Field
 
 class InfoAdapter(private val context: Context) : BaseAdapter() {
 
@@ -30,7 +34,10 @@ class InfoAdapter(private val context: Context) : BaseAdapter() {
         val view = inflater.inflate(R.layout.item_layout_type_one_col, null)
         val model = infoList[position]
         val tvTitle = view.findViewById<TextView>(R.id.tv_title)
+        val ivIcon = view.findViewById<ImageView>(R.id.iv_icon)
         tvTitle.text = model.title
+        val id = context.resources.getIdentifier(model.icon, "drawable", context.packageName)
+        ivIcon.setImageResource(id)
         return view
     }
 

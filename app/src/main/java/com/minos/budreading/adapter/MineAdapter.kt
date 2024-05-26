@@ -9,11 +9,11 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
-import com.minos.budreading.model.CardBean
 import com.minos.budreading.R
 import com.minos.budreading.ViewUtil
-import com.minos.budreading.model.InfoModel
+import com.minos.budreading.model.CardBean
 
 class MineAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolder>() {
 
@@ -81,6 +81,9 @@ class MineAdapter(private val context: Context) : RecyclerView.Adapter<ViewHolde
                 holder.apply {
                     tvName.text = model.item3?.name
                     tvSignature.text = model.item3?.signature
+                    Glide.with(ivHead)
+                        .load(model.item3?.headUrl)
+                        .into(ivHead)
                 }
             }
         }
